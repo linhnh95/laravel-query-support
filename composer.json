@@ -1,0 +1,39 @@
+{
+    "name": "linhnh95/laravel-query-support",
+    "type": "library",
+    "description": "Library Support For Query Laravel",
+    "keywords": ["laravel", "query-support"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nguyen Hong Linh",
+            "email": "jd.linhnh95@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.2",
+        "laravel/framework": ">=6.0",
+        "firebase/php-jwt": "^5.0",
+        "predis/predis": "^1.1",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "ext-openssl": "*"
+    },
+    "require-dev": {},
+    "autoload": {
+        "psr-4": {
+            "Linhnh95\\LaravelQuerySupport\\": "src"
+        }
+    },
+    "autoload-dev": {},
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Linhnh95\\LaraveLSupportQuery\\LaraveLSupportQueryProvider"
+            ]
+        }
+    }
+}
