@@ -6,7 +6,7 @@
  * Time: 1:48 PM
  */
 
-namespace Linhnh95\LaravelQuerySupport\common;
+namespace Linhnh95\LaravelQuerySupport\Common;
 
 
 class Common
