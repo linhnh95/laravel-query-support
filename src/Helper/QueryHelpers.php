@@ -3,12 +3,11 @@
 namespace Linhnh95\LaravelQuerySupport\Helper;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 
 class QueryHelpers
 {
     /**
-     * @var Model
+     * @var
      */
     protected $model;
 
@@ -20,9 +19,9 @@ class QueryHelpers
     /**
      * QueryHelperV2 constructor.
      *
-     * @param Model $model
+     * @param $model
      */
-    public function __construct(Model $model)
+    public function __construct($model)
     {
         $this->model = $model;
     }
@@ -62,33 +61,6 @@ class QueryHelpers
 
             // Create Where SQL
             $this->where($value, $conditions[$key], $this->getQuery());
-        }
-        return $this;
-    }
-
-    /**
-     * @param array $params
-     *
-     * @return $this
-     */
-    public function orderBy(array $params)
-    {
-        if (isset($params['order_by'])) {
-            $order = isset($params['order']) ? strtoupper($params['order']) : 'ASC';
-            $this->getQuery()->orderBy($params['order_by'], $order);
-        }
-        return $this;
-    }
-
-    /**
-     * @param array $withCount
-     *
-     * @return $this
-     */
-    public function withCount(array $withCount)
-    {
-        if ( ! empty($withCount)) {
-            $this->getQuery()->withCount($withCount);
         }
         return $this;
     }
