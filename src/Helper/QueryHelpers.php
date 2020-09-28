@@ -24,6 +24,7 @@ class QueryHelpers
     public function __construct($model)
     {
         $this->model = $model;
+        $this->query = $model->newQuery();
     }
 
     /**
