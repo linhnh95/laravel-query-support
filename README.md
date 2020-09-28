@@ -1,6 +1,6 @@
 ## laravel-query-support
 
-Laravel 5 Layer is a package that helps to create structure and help with the project construction process.
+Laravel 5 Layer is a package that helps to fast create Query
 
 ## Installation
 
