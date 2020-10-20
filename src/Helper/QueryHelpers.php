@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Builder;
 class QueryHelpers
 {
     /**
+     * @var
+     */
+    protected $model;
+
+    /**
      * @var Builder
      */
     protected $query;
@@ -16,9 +21,10 @@ class QueryHelpers
      *
      * @param $model
      */
-    public function __construct($query)
+    public function __construct($model)
     {
-        $this->query = $query;
+        $this->model = $model;
+        $this->query = $model->newQuery();
     }
 
     /**
