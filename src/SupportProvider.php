@@ -33,8 +33,7 @@ class SupportProvider extends ServiceProvider
     {
         Builder::macro('filterQuery', function ($params = [], $conditions = []) {
             $query = new QueryHelpers($this);
-            $newQuery = $query->createWhere($params, $conditions);
-            return $newQuery;
+            return $query->createWhere($params, $conditions);
         });
     }
 }
