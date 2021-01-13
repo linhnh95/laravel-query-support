@@ -32,8 +32,10 @@ class SupportProvider extends ServiceProvider
     public function register()
     {
         Builder::macro('filterQuery', function ($params = [], $conditions = []) {
-            $query = new QueryHelpers($this);
-            return $query->createWhere($params, $conditions);
+            $query = new QueryHelpers();
+            $query->setQuery($this);
+            $query->createWhere($params, $conditions);
+            return $query->getQuery();
         });
     }
 }

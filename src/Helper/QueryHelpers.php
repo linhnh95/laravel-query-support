@@ -7,24 +7,22 @@ use Illuminate\Database\Eloquent\Builder;
 class QueryHelpers
 {
     /**
-     * @var
+     * @var Builder|\Illuminate\Database\Eloquent\Model
      */
     protected $model;
 
     /**
-     * @var Builder
+     * @var
      */
     protected $query;
 
     /**
-     * QueryHelperV2 constructor.
-     *
-     * @param $model
+     * @param Builder $builder
      */
-    public function __construct($model)
+    public function setQuery(Builder $builder)
     {
-        $this->model = $model;
-        $this->query = $model->newQuery();
+        $this->query = $builder;
+        $this->model = $builder->getModel();
     }
 
     /**
@@ -56,14 +54,14 @@ class QueryHelpers
         foreach ($params as $key => $value) {
 
             // Pass If Not Isset Conditions With Keys
-            if ( ! isset($conditions[$key])) {
+            if (!isset($conditions[$key])) {
                 continue;
             }
 
             // Create Where SQL
             $this->where($value, $conditions[$key], $this->getQuery());
         }
-        return $this;
+        return $this->getQuery();
     }
 
     /**
@@ -90,7 +88,7 @@ class QueryHelpers
     private function whereGroup($value, array $condition, $query)
     {
         $conditionGroup = $this->pluckConditionWithRelation($condition);
-        if ( ! empty($conditionGroup)) {
+        if (!empty($conditionGroup)) {
             foreach ($conditionGroup as $relation => $cond) {
                 $query->whereHas($relation, function ($query) use ($value, $cond, $relation) {
                     $this->buildWhereByGroup($query, $value, $cond, $relation);
@@ -130,7 +128,7 @@ class QueryHelpers
     private function pluckConditionWithRelation(array $condition)
     {
         $result = [];
-        if ( ! empty($condition)) {
+        if (!empty($condition)) {
             foreach ($condition as $key => $value) {
                 if ($value['relation'] !== '') {
                     $result[$value['relation']][$key] = $value;
