@@ -10,7 +10,7 @@ namespace Linhnh95\LaravelQuerySupport;
 
 use Linhnh95\LaravelQuerySupport\Helper\QueryHelpers;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Eloquent\Builder;;
 
 class SupportProvider extends ServiceProvider
 {
