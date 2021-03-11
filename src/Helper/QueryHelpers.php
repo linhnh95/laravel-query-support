@@ -102,20 +102,20 @@ class QueryHelpers
     /**
      * @param $query
      * @param $value
-     * @param $cond
+     * @param $condition
      * @param $relation
      *
      * @return mixed
      */
-    private function buildWhereByGroup($query, $value, $cond, $relation = '')
+    private function buildWhereByGroup($query, $value, $condition, $relation = '')
     {
-        $query->where(function ($q) use ($value, $cond, $relation) {
-            foreach ($cond as $c) {
+        $query->where(function ($q) use ($value, $condition, $relation) {
+            foreach ($condition as $cond) {
                 if ($relation !== '') {
-                    $c['relation'] = str_replace($relation, '', $c['relation']);
-                    $c['relation'] = trim($c['relation'], '.');
+                    $cond['relation'] = str_replace($relation, '', $cond['relation']);
+                    $cond['relation'] = trim($cond['relation'], '.');
                 }
-                $this->where($value, $c, $q);
+                $this->where($value, $cond, $q);
             }
         });
         return $query;
