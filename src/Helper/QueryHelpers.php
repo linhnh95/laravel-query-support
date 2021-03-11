@@ -130,6 +130,9 @@ class QueryHelpers
         $result = [];
         if (!empty($condition)) {
             foreach ($condition as $key => $value) {
+                if (isset($value['group_relation'])) {
+                    continue;
+                }
                 if ($value['relation'] !== '') {
                     $result[$value['relation']][$key] = $value;
                 }
