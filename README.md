@@ -7,7 +7,7 @@ Laravel 5 Layer is a package that helps to fast create Query
 Require this package with composer. It is recommended to only require the package.
 
 ```shell
-composer require linhnh95/laravel-query-support
+composer require linhnha95/laravel-query-support
 ```
 
 ### Config
